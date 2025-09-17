@@ -67,10 +67,10 @@ Antes de executar o projeto, certifique-se de ter instalado:
 
 ### Página Inicial
 - Acesse a página inicial com o logo personalizado
-- Escolha entre "Fazer Login" ou "Cadastrar-se"
+- Escolha entre "Fazer Login" ou "Cadastre-se"
 
 ### Cadastro de Usuário
-1. Clique em "Cadastrar-se"
+1. Clique em "Cadastre-se"
 2. Preencha todos os campos obrigatórios:
    - Nome completo
    - Email válido

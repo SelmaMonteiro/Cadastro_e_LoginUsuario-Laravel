@@ -166,7 +166,7 @@
             </a>
             
             <a href="{{ route('user.register.form') }}" class="btn btn-register">
-                📝 CADASTRAR-SE
+                📝 CADASTRE-SE
             </a>
         </div>
         
