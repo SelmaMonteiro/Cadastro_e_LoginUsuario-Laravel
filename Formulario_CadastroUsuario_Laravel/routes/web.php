@@ -31,3 +31,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/editar', [UserController::class, 'showEditForm'])->name('user.edit');
     Route::post('/editar', [UserController::class, 'update'])->name('user.update');
 });
+
+// Incluir rotas de teste
+require __DIR__.'/test.php';

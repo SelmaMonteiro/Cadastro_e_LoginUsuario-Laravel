@@ -183,6 +183,10 @@
             errorDiv.style.display = 'none';
             successDiv.style.display = 'none';
             
+            console.log('Enviando requisição para:', '{{ route("login.post") }}');
+            console.log('FormData:', Object.fromEntries(formData));
+            console.log('CSRF Token:', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+            
             fetch('{{ route("login.post") }}', {
                 method: 'POST',
                 body: formData,
@@ -190,8 +194,16 @@
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                 }
             })
-            .then(response => response.json())
+            .then(response => {
+                console.log('Status da resposta:', response.status);
+                console.log('Headers da resposta:', response.headers);
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status + ': ' + response.statusText);
+                }
+                return response.json();
+            })
             .then(data => {
+                console.log('Dados recebidos:', data);
                 if (data.success) {
                     successDiv.textContent = data.message;
                     successDiv.style.display = 'block';
@@ -206,8 +218,9 @@
                 }
             })
             .catch(error => {
-                console.error('Erro:', error);
-                errorDiv.textContent = 'Seja Bem-Vindo! Aguarde para começar....';
+                console.error('Erro completo:', error);
+                console.log('Detalhes do erro:', error.message);
+                errorDiv.textContent = 'Erro na requisição: ' + error.message;
                 errorDiv.style.display = 'block';
             });
         });

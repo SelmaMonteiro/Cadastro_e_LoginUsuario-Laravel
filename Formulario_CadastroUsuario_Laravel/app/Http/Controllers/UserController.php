@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -89,26 +90,47 @@ class UserController extends Controller
      */
     public function login(Request $request)
     {
-        $credentials = $request->validate([
-            'username' => 'required|string',
-            'password' => 'required|string',
-        ]);
-
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            
-            return response()->json([
-                'success' => true,
-                'message' => 'Login realizado com sucesso!',
-                'redirect' => route('user.edit')
+        try {
+            $credentials = $request->validate([
+                'username' => 'required|string',
+                'password' => 'required|string',
             ]);
-        }
 
-        return response()->json([
-            'success' => false,
-            'message' => 'Credenciais inválidas!'
-        ], 401);
-    }
+            // Tentar autenticação com tratamento de erro específico
+            try {
+                $authResult = Auth::attempt($credentials);
+                
+                if ($authResult) {
+                    $request->session()->regenerate();
+                    
+                    return response()->json([
+                        'success' => true,
+                        'message' => 'Login realizado com sucesso!',
+                        'redirect' => '/editar'
+                    ]);
+                }
+
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Credenciais inválidas!'
+                ]);
+            } catch (\Exception $authException) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Erro na autenticação: ' . $authException->getMessage(),
+                    'file' => $authException->getFile(),
+                    'line' => $authException->getLine()
+                ], 500);
+            }
+        } catch (\Exception $e) {
+            return response()->json([
+                 'success' => false,
+                 'message' => 'Erro interno: ' . $e->getMessage(),
+                 'file' => $e->getFile(),
+                 'line' => $e->getLine()
+             ], 500);
+         }
+     }
 
     /**
      * Exibe o formulário de edição do usuário
