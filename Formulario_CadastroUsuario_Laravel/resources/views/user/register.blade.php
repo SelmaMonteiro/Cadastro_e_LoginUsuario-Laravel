@@ -166,6 +166,8 @@
             
             <button type="submit" class="submit-btn">Cadastrar</button>
         </form>
+        
+        <a href="{{ route('home') }}" style="display: block; text-align: center; color: rgba(255, 255, 255, 0.8); text-decoration: none; margin-top: 20px; font-size: 14px; transition: color 0.3s ease;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">← Voltar ao início</a>
     </div>
 
     <script>

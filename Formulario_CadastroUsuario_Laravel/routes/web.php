@@ -14,9 +14,20 @@ use App\Http\Controllers\UserController;
 |
 */
 
-// Rota para exibir o formulário de cadastro
-Route::get('/', [UserController::class, 'showRegistrationForm'])->name('user.register.form');
-Route::get('/cadastro', [UserController::class, 'showRegistrationForm'])->name('user.register.form.alt');
+// Rota para tela inicial
+Route::get('/', [UserController::class, 'home'])->name('home');
 
-// Rota para processar o cadastro
+// Rotas de autenticação
+Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [UserController::class, 'login'])->name('login.post');
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
+// Rotas de cadastro
+Route::get('/cadastro', [UserController::class, 'showRegistrationForm'])->name('user.register.form');
 Route::post('/cadastro', [UserController::class, 'register'])->name('user.register');
+
+// Rotas protegidas por autenticação
+Route::middleware('auth')->group(function () {
+    Route::get('/editar', [UserController::class, 'showEditForm'])->name('user.edit');
+    Route::post('/editar', [UserController::class, 'update'])->name('user.update');
+});

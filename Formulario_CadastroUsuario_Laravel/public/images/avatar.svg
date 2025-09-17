@@ -1,0 +1,31 @@
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffa500;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9b59b6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8e44ad;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7d3c98;stop-opacity:1" />
+    </linearGradient>
+    <clipPath id="circle">
+      <circle cx="40" cy="40" r="38"/>
+    </clipPath>
+  </defs>
+  
+  <!-- Border circle -->
+  <circle cx="40" cy="40" r="40" fill="url(#borderGradient)"/>
+  
+  <!-- Background with purple gradient -->
+  <circle cx="40" cy="40" r="38" fill="url(#purpleGradient)"/>
+  
+  <!-- User icon - head (circle) -->
+  <circle cx="40" cy="32" r="12" fill="white" opacity="0.9"/>
+  
+  <!-- User icon - body (rounded rectangle/arc) -->
+  <path d="M20 65 Q20 50 25 45 Q30 40 40 40 Q50 40 55 45 Q60 50 60 65 L60 75 Q60 78 57 78 L23 78 Q20 78 20 75 Z" fill="white" opacity="0.9" clip-path="url(#circle)"/>
+  
+  <!-- Subtle inner shadow for depth -->
+  <circle cx="40" cy="40" r="38" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1" opacity="0.3"/>
+</svg>
