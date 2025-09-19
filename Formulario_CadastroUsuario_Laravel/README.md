@@ -99,9 +99,18 @@ O sistema possui uma interface moderna com:
 
 ## 📹 Demonstração
 
-> **Vídeo de demonstração será adicionado em breve!**
-> 
-> Veja o projeto funcionando: [Link para o vídeo](URL_DO_VIDEO_AQUI)
+🎬 **Assista ao vídeo de demonstração completa do sistema:**
+
+[![Demonstração do Sistema](https://img.shields.io/badge/▶️%20Assistir%20Vídeo-Google%20Drive-blue?style=for-the-badge&logo=googledrive)](https://drive.google.com/file/d/1Emg8sIzyt30Bh7av05kzh7wD7jYidIXL/view?usp=sharing&t=26)
+
+> 🎥 **O que você verá no vídeo:**
+> - Navegação pela página inicial com logo personalizado
+> - Processo completo de cadastro de usuário
+> - Sistema de login e autenticação
+> - Funcionalidade de edição de perfil
+> - Interface responsiva e gradientes Cool Mint
+> - Validações em tempo real
+> - Mensagens de feedback e navegação entre telas
 
 ## 📂 Estrutura do Projeto
 
